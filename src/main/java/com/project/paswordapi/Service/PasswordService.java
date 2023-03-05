@@ -3,17 +3,17 @@ package com.project.paswordapi.Service;
 import com.project.paswordapi.Entity.PasswordEntity;
 import com.project.paswordapi.Entity.UserEntity;
 import com.project.paswordapi.Repository.PasswordRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@AllArgsConstructor
 public class PasswordService {
 
-    @Autowired
-    private PasswordRepository passwordRepository;
+    private final PasswordRepository passwordRepository;
 
     private static final String CHAR_LOWER = "abcdefghijklmnopqrstuvwxyz";
     private static final String CHAR_UPPER = CHAR_LOWER.toUpperCase();

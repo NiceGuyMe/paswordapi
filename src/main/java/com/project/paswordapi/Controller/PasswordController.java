@@ -5,7 +5,7 @@ import com.project.paswordapi.Controller.Response.PasswordResponse;
 import com.project.paswordapi.Entity.PasswordEntity;
 import com.project.paswordapi.Entity.UserEntity;
 import com.project.paswordapi.Service.PasswordService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +19,11 @@ import java.util.UUID;
 
 @RestController
 @CrossOrigin("*")
-
+@AllArgsConstructor
 public class PasswordController {
-    @Autowired
-    private PasswordService passwordService;
+    private final PasswordService passwordService;
 
-    @Autowired
-    private PasswordMapper passwordMapper;
+    private final PasswordMapper passwordMapper;
 
     @GetMapping("/generate/{passwordSize}")
     public String createPassword(@PathVariable Integer passwordSize) {
