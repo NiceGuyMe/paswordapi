@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class UserController {
@@ -24,5 +25,8 @@ private UserService userService;
         List<UserEntity> domain = createUserResponses.stream().map(userMapper::toDomain).toList();
         userService.createUser(domain);
         return domain.stream().map(userMapper::toRest).toList();
+    }
+    public void deleteUser (UUID userId){
+        userService.deleteUser(userId);
     }
 }

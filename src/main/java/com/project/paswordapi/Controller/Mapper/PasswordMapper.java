@@ -13,13 +13,13 @@ public class PasswordMapper {
         return PasswordResponse.builder()
                 .label(domain.getLabel())
                 .password(domain.getPassword())
-                .UserID(domain.getUserEntity().getId())
+                .UserId(domain.getUserEntity().getId())
                 .build();
     }
 
     public PasswordEntity toDomain(PasswordResponse rest){
         UserEntity user = new UserEntity();
-        user.setId(rest.getUserID());
+        user.setId(rest.getUserId());
         return PasswordEntity.builder()
                 .id(UUID.randomUUID())
                 .label(rest.getLabel())

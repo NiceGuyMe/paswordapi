@@ -37,8 +37,8 @@ public class PasswordController {
         return passwordService.isStrongPassword(password);
     }
 
-    @GetMapping("/{userID}/mypassword")
-    public List<PasswordResponse> showallpassword(@PathVariable UUID userID) {
+    @GetMapping("/{userID}/myPassword")
+    public List<PasswordResponse> showAllPassword(@PathVariable UUID userID) {
         UserEntity user = new UserEntity();
         user.setId(userID);
         List<PasswordEntity> domain = passwordService.ShowAllPassword(user);

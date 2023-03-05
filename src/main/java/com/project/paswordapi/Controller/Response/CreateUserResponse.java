@@ -2,7 +2,6 @@ package com.project.paswordapi.Controller.Response;
 
 import lombok.*;
 
-import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor

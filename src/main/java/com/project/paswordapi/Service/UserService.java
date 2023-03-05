@@ -13,8 +13,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<UserEntity> createUser(List<UserEntity> userEntity){
-     return userRepository.saveAll(userEntity);
+    public void createUser(List<UserEntity> userEntity){
+        userRepository.saveAll(userEntity);
     }
 
     public void deleteUser(UUID userID){

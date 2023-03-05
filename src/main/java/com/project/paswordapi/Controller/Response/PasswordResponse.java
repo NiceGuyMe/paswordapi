@@ -14,7 +14,7 @@ import java.util.UUID;
 @Builder
 @ToString
 public class PasswordResponse {
-    private UUID UserID;
+    private UUID UserId;
     private String label;
     private String password;
 }
