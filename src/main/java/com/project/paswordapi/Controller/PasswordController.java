@@ -42,10 +42,16 @@ public class PasswordController {
     }
 
     @PostMapping("/save")
-    public List<PasswordResponse> savePassword(@RequestBody List<CreatePasswordResponse> createPasswordResponses) {
-        List<PasswordEntity> domain= createPasswordResponses.stream().map(passwordMapper::toDomain).toList();
-        return passwordService.savePassword(domain).stream().map(passwordMapper::toRest).toList();
+    public List<PasswordResponse> savePassword (@RequestBody List<CreatePasswordResponse> createPasswordResponses){
+        List<PasswordEntity> Domain = createPasswordResponses.stream().map(passwordMapper::toDomain).toList();
+         passwordService.savePassword(Domain);
+         return Domain.stream().map(passwordMapper::toRest).toList();
     }
+
+
+//    public List<PasswordEntity> savePassword (@RequestBody List<PasswordEntity> passwordEntities){
+//        return passwordService.savePassword(passwordEntities);
+//    }
     @PostMapping("/ping")
     public String ping(){
         return "pong";

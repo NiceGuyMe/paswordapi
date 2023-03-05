@@ -13,6 +13,7 @@ import lombok.ToString;
 @ToString
 public class CreatePasswordResponse {
     private Long id;
+    private Long userID;
     private String label;
     private String password;
 }

@@ -22,8 +22,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests().anyRequest().authenticated().and().formLogin() .permitAll().and().logout().permitAll();
-
-//        .defaultSuccessUrl("/homepage.html", true)
     }
 
     @Override

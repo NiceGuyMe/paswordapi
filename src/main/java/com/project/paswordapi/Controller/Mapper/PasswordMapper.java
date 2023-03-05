@@ -3,6 +3,7 @@ package com.project.paswordapi.Controller.Mapper;
 import com.project.paswordapi.Controller.Response.CreatePasswordResponse;
 import com.project.paswordapi.Controller.Response.PasswordResponse;
 import com.project.paswordapi.Entity.PasswordEntity;
+import com.project.paswordapi.Entity.UserEntity;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,11 +18,13 @@ public class PasswordMapper {
     }
 
     public PasswordEntity toDomain(CreatePasswordResponse rest){
+        UserEntity user = new UserEntity();
+        user.setId(rest.getUserID());
         return PasswordEntity.builder()
                 .id(rest.getId())
                 .label(rest.getLabel())
-                .password(rest.getLabel())
-//                .userEntity()
+                .password(rest.getPassword())
+                .userEntity(user)
                 .build();
     }
 }
