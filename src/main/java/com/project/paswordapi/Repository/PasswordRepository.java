@@ -7,9 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository
-public interface PasswordRepository extends JpaRepository<PasswordEntity, Long> {
+public interface PasswordRepository extends JpaRepository<PasswordEntity, UUID> {
 
     List<PasswordEntity> findByuserEntity(UserEntity userEntity);
 

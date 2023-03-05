@@ -6,15 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.UUID;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
 @ToString
 public class PasswordResponse {
-    private Long id;
-    private Long UserID;
-
+    private UUID UserID;
     private String label;
     private String password;
 }

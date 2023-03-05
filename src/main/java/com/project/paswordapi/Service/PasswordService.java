@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PasswordService {
@@ -39,7 +40,7 @@ public class PasswordService {
         return passwordRepository.findByuserEntity(user);
     }
 
-    public void deletePassword(Long passwordID) {
+    public void deletePassword(UUID passwordID) {
         passwordRepository.deleteById(passwordID);
     }
 }

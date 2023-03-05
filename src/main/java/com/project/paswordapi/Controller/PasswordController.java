@@ -1,7 +1,6 @@
 package com.project.paswordapi.Controller;
 
 import com.project.paswordapi.Controller.Mapper.PasswordMapper;
-import com.project.paswordapi.Controller.Response.CreatePasswordResponse;
 import com.project.paswordapi.Controller.Response.PasswordResponse;
 import com.project.paswordapi.Entity.PasswordEntity;
 import com.project.paswordapi.Entity.UserEntity;
@@ -16,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
+
 @RestController
 @CrossOrigin("*")
+
 public class PasswordController {
     @Autowired
     private PasswordService passwordService;
@@ -35,30 +37,28 @@ public class PasswordController {
         return passwordService.isStrongPassword(password);
     }
 
-    @GetMapping("/mypassword")
-    public List<PasswordResponse> showallpassword(@RequestBody UserEntity user) {
+    @GetMapping("/{userID}/mypassword")
+    public List<PasswordResponse> showallpassword(@PathVariable UUID userID) {
+        UserEntity user = new UserEntity();
+        user.setId(userID);
         List<PasswordEntity> domain = passwordService.ShowAllPassword(user);
         return domain.stream().map(passwordMapper::toRest).toList();
     }
 
     @PostMapping("/save")
-    public List<PasswordResponse> savePassword (@RequestBody List<CreatePasswordResponse> createPasswordResponses){
+    public List<PasswordResponse> savePassword (@RequestBody List<PasswordResponse> createPasswordResponses){
         List<PasswordEntity> Domain = createPasswordResponses.stream().map(passwordMapper::toDomain).toList();
          passwordService.savePassword(Domain);
          return Domain.stream().map(passwordMapper::toRest).toList();
     }
 
-
-//    public List<PasswordEntity> savePassword (@RequestBody List<PasswordEntity> passwordEntities){
-//        return passwordService.savePassword(passwordEntities);
-//    }
     @PostMapping("/ping")
     public String ping(){
         return "pong";
     }
 
     @DeleteMapping("delete/{passwordID}")
-    public void deletePassword(@PathVariable Long passwordID) {
+    public void deletePassword(@PathVariable UUID passwordID) {
         passwordService.deletePassword(passwordID);
     }
 }
