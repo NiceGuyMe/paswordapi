@@ -34,8 +34,8 @@ public class PasswordService {
         return password.matches("^(?=.*[a-z])(?=.*[A-Z]).+$\n") && password.matches("^(?=.*\\d).+$") && password.matches("^(?=.*[@#$%^&+=]).+$");
     }
 
-    public void savePassword(List<PasswordEntity> passwordEntity) {
-        passwordRepository.saveAll(passwordEntity);
+    public List<PasswordEntity> savePassword(List<PasswordEntity> passwordEntity) {
+        return passwordRepository.saveAll(passwordEntity);
     }
 
     public List<PasswordEntity> ShowAllPassword(UserEntity user) {

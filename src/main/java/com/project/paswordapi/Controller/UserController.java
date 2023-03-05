@@ -22,7 +22,8 @@ private final UserService userService;
         userService.createUser(domain);
         return domain.stream().map(userMapper::toRest).toList();
     }
-    public void deleteUser (UUID userId){
+    @DeleteMapping("/deleteUser/{userId}")
+    public void deleteUser (@PathVariable UUID userId){
         userService.deleteUser(userId);
     }
 }

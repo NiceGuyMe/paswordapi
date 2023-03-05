@@ -15,8 +15,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @EqualsAndHashCode
 @Table(name = "passwords")

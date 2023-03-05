@@ -1,5 +1,6 @@
 package com.project.paswordapi.Controller.Mapper;
 
+import com.project.paswordapi.Controller.Response.CreatePasswordResponses;
 import com.project.paswordapi.Controller.Response.PasswordResponse;
 import com.project.paswordapi.Entity.PasswordEntity;
 import com.project.paswordapi.Entity.UserEntity;
@@ -17,7 +18,7 @@ public class PasswordMapper {
                 .build();
     }
 
-    public PasswordEntity toDomain(PasswordResponse rest){
+    public PasswordEntity toDomain(CreatePasswordResponses rest){
         UserEntity user = new UserEntity();
         user.setId(rest.getUserId());
         return PasswordEntity.builder()

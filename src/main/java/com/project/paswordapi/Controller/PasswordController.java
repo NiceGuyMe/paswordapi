@@ -1,6 +1,7 @@
 package com.project.paswordapi.Controller;
 
 import com.project.paswordapi.Controller.Mapper.PasswordMapper;
+import com.project.paswordapi.Controller.Response.CreatePasswordResponses;
 import com.project.paswordapi.Controller.Response.PasswordResponse;
 import com.project.paswordapi.Entity.PasswordEntity;
 import com.project.paswordapi.Entity.UserEntity;
@@ -45,7 +46,7 @@ public class PasswordController {
     }
 
     @PostMapping("/save")
-    public List<PasswordResponse> savePassword (@RequestBody List<PasswordResponse> createPasswordResponses){
+    public List<PasswordResponse> savePassword (@RequestBody List<CreatePasswordResponses> createPasswordResponses){
         List<PasswordEntity> Domain = createPasswordResponses.stream().map(passwordMapper::toDomain).toList();
          passwordService.savePassword(Domain);
          return Domain.stream().map(passwordMapper::toRest).toList();
