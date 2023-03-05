@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
+@SuppressWarnings("unused")
 public class UserController {
 private final UserService userService;
     private final UserMapper userMapper;

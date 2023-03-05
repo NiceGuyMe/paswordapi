@@ -20,6 +20,7 @@ import java.util.UUID;
 @RestController
 @CrossOrigin("*")
 @AllArgsConstructor
+@SuppressWarnings("unused")
 public class PasswordController {
     private final PasswordService passwordService;
 
