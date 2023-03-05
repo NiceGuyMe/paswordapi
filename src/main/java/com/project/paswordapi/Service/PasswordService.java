@@ -4,6 +4,7 @@ import com.project.paswordapi.Entity.PasswordEntity;
 import com.project.paswordapi.Entity.UserEntity;
 import com.project.paswordapi.Repository.PasswordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,6 +34,9 @@ public class PasswordService {
     }
 
     public List<PasswordEntity> savePassword(List<PasswordEntity> passwordEntity) {
+        for (int i = 0; i <passwordEntity.size() ; i++) {
+            passwordEntity.get(i).hashPassword(passwordEntity.get(i).getPassword());
+        }
        return passwordRepository.saveAll(passwordEntity);
     }
 
